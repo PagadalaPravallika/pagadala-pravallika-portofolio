@@ -29,7 +29,7 @@ const ContactSection = () => {
           {/* Contact info */}
           <div className="space-y-6">
             <a
-              href="mailto:pravalika@example.com"
+              href="mailto:pagadalapravallika2409@gmail.com"
               className="glass rounded-xl p-4 flex items-center gap-4 hover:bg-primary/10 transition-colors group block"
             >
               <div className="p-3 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20">
@@ -37,11 +37,11 @@ const ContactSection = () => {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Email</p>
-                <p className="text-foreground group-hover:text-primary transition-colors">pravalika@example.com</p>
+                <p className="text-foreground group-hover:text-primary transition-colors">pagadalapravallika2409@gmail.com</p>
               </div>
             </a>
             <a
-              href="https://github.com/"
+              href="https://github.com/pagadalapravallika"
               target="_blank"
               rel="noopener noreferrer"
               className="glass rounded-xl p-4 flex items-center gap-4 hover:bg-primary/10 transition-colors group block"
@@ -51,11 +51,11 @@ const ContactSection = () => {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">GitHub</p>
-                <p className="text-foreground group-hover:text-primary transition-colors">github.com/pravalika</p>
+                <p className="text-foreground group-hover:text-primary transition-colors">github.com/pagadalapravallika</p>
               </div>
             </a>
             <a
-              href="https://linkedin.com/"
+              href="https://linkedin.com/in/pagadalapravallika"
               target="_blank"
               rel="noopener noreferrer"
               className="glass rounded-xl p-4 flex items-center gap-4 hover:bg-primary/10 transition-colors group block"
@@ -65,7 +65,7 @@ const ContactSection = () => {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">LinkedIn</p>
-                <p className="text-foreground group-hover:text-primary transition-colors">linkedin.com/in/pravalika</p>
+                <p className="text-foreground group-hover:text-primary transition-colors">linkedin.com/in/pagadalapravallika</p>
               </div>
             </a>
           </div>
