@@ -1,5 +1,6 @@
 import { Github, Linkedin, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import profileImg from "@/assets/profile.jpeg";
 
 const HeroSection = () => {
   return (
@@ -12,7 +13,7 @@ const HeroSection = () => {
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
       <div className="absolute top-1/2 left-1/3 w-4 h-4 bg-primary/40 rounded-full animate-float" />
       <div className="absolute top-1/4 right-1/4 w-3 h-3 bg-secondary/50 rounded-full animate-float" style={{ animationDelay: "2s" }} />
-      <div className="absolute bottom-1/3 left-1/5 w-2 h-2 bg-primary/60 rounded-full animate-float" style={{ animationDelay: "4s" }} />
+      <div className="absolute bottom-1/3 left-[20%] w-2 h-2 bg-primary/60 rounded-full animate-float" style={{ animationDelay: "4s" }} />
 
       <div className="relative max-w-6xl mx-auto px-6 py-20 w-full grid md:grid-cols-2 gap-12 items-center">
         {/* Left content */}
@@ -40,7 +41,7 @@ const HeroSection = () => {
           </div>
           <div className="flex gap-4 pt-2">
             <a
-              href="https://github.com/"
+              href="https://github.com/pagadalapravallika"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-lg glass hover:bg-primary/20 transition-colors text-muted-foreground hover:text-foreground"
@@ -48,7 +49,7 @@ const HeroSection = () => {
               <Github size={20} />
             </a>
             <a
-              href="https://linkedin.com/"
+              href="https://linkedin.com/in/pagadalapravallika"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-lg glass hover:bg-primary/20 transition-colors text-muted-foreground hover:text-foreground"
@@ -58,14 +59,16 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Right - Profile photo placeholder */}
+        {/* Right - Profile photo */}
         <div className="flex justify-center opacity-0 animate-fade-up" style={{ animationDelay: "0.5s" }}>
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary rounded-full blur-2xl opacity-30 animate-pulse-glow" />
-            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full gradient-border overflow-hidden glass flex items-center justify-center">
-              <div className="w-full h-full rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                <span className="text-6xl md:text-7xl font-bold gradient-text">PP</span>
-              </div>
+            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full gradient-border overflow-hidden glass">
+              <img
+                src={profileImg}
+                alt="Pagadala Pravalika"
+                className="w-full h-full object-cover rounded-full"
+              />
             </div>
           </div>
         </div>

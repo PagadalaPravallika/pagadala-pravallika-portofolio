@@ -1,5 +1,6 @@
-import { ExternalLink, Users, BookOpen, BrainCircuit, Leaf } from "lucide-react";
+import { Users, BookOpen, BrainCircuit, Leaf } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useEffect, useRef, useState } from "react";
 
 const projects = [
   {
@@ -29,6 +30,55 @@ const projects = [
   },
 ];
 
+const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
+      { threshold: 0.15 }
+    );
+    if (cardRef.current) observer.observe(cardRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={cardRef}
+      className={`group glass rounded-xl p-6 gradient-border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
+      style={{ transitionDelay: `${index * 150}ms` }}
+    >
+      <div className="flex items-start justify-between mb-4">
+        <div className="p-3 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 group-hover:from-primary/40 group-hover:to-secondary/40 group-hover:scale-110 transition-all duration-300">
+          <project.icon size={24} className="text-primary" />
+        </div>
+        {project.ongoing && (
+          <span className="text-xs px-2 py-1 rounded-full bg-secondary/20 text-secondary font-medium animate-pulse">
+            In Progress
+          </span>
+        )}
+      </div>
+      <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+        {project.title}
+      </h3>
+      <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{project.desc}</p>
+      <div className="flex flex-wrap gap-2">
+        {project.tech.map((t) => (
+          <span
+            key={t}
+            className="text-xs px-2.5 py-1 rounded-full bg-primary/10 text-primary/80 border border-primary/20 group-hover:bg-primary/20 group-hover:border-primary/40 transition-colors duration-300"
+          >
+            {t}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const ProjectsSection = () => {
   const ref = useScrollAnimation();
 
@@ -41,36 +91,8 @@ const ProjectsSection = () => {
           Featured projects showcasing problem-solving and technical skills.
         </p>
         <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((p) => (
-            <div
-              key={p.title}
-              className="group glass rounded-xl p-6 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 gradient-border"
-            >
-              <div className="flex items-start justify-between mb-4">
-                <div className="p-3 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20">
-                  <p.icon size={24} className="text-primary" />
-                </div>
-                {p.ongoing && (
-                  <span className="text-xs px-2 py-1 rounded-full bg-secondary/20 text-secondary font-medium">
-                    In Progress
-                  </span>
-                )}
-              </div>
-              <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                {p.title}
-              </h3>
-              <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{p.desc}</p>
-              <div className="flex flex-wrap gap-2">
-                {p.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="text-xs px-2.5 py-1 rounded-full bg-primary/10 text-primary/80 border border-primary/20"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
+          {projects.map((p, i) => (
+            <ProjectCard key={p.title} project={p} index={i} />
           ))}
         </div>
       </div>

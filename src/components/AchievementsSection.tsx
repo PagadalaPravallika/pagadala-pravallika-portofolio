@@ -1,5 +1,6 @@
 import { Award, BookCheck, Trophy } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useEffect, useRef, useState } from "react";
 
 const achievements = [
   {
@@ -19,6 +20,37 @@ const achievements = [
   },
 ];
 
+const AchievementCard = ({ achievement, index }: { achievement: typeof achievements[0]; index: number }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
+      { threshold: 0.2 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`glass rounded-xl p-6 text-center transition-all duration-700 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/15 ${
+        isVisible ? "opacity-100 translate-y-0 rotate-0" : "opacity-0 translate-y-12 rotate-1"
+      }`}
+      style={{ transitionDelay: `${index * 200}ms` }}
+    >
+      <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 relative">
+        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/10 to-secondary/10 animate-pulse-glow" />
+        <achievement.icon size={28} className="text-primary relative z-10" />
+      </div>
+      <h3 className="font-semibold text-foreground mb-2 text-lg">{achievement.title}</h3>
+      <p className="text-sm text-muted-foreground leading-relaxed">{achievement.desc}</p>
+    </div>
+  );
+};
+
 const AchievementsSection = () => {
   const ref = useScrollAnimation();
 
@@ -28,17 +60,8 @@ const AchievementsSection = () => {
       <div className="max-w-6xl mx-auto px-6" ref={ref}>
         <h2 className="text-3xl md:text-4xl font-bold mb-12 gradient-text inline-block">Achievements</h2>
         <div className="grid md:grid-cols-3 gap-6">
-          {achievements.map((a) => (
-            <div
-              key={a.title}
-              className="glass rounded-xl p-6 text-center hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
-            >
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                <a.icon size={24} className="text-primary" />
-              </div>
-              <h3 className="font-semibold text-foreground mb-2">{a.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{a.desc}</p>
-            </div>
+          {achievements.map((a, i) => (
+            <AchievementCard key={a.title} achievement={a} index={i} />
           ))}
         </div>
       </div>
