@@ -46,11 +46,13 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
   return (
     <div
       ref={cardRef}
-      className={`group glass rounded-xl p-6 gradient-border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 ${
+      className={`group relative glass rounded-xl p-6 shimmer-border tilt-card overflow-hidden hover:shadow-2xl hover:shadow-primary/30 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
-      style={{ transitionDelay: `${index * 150}ms` }}
+      style={{ transitionDelay: `${index * 150}ms`, transitionProperty: "opacity, transform, box-shadow", transitionDuration: "600ms" }}
     >
+      <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="relative">
       <div className="flex items-start justify-between mb-4">
         <div className="p-3 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 group-hover:from-primary/40 group-hover:to-secondary/40 group-hover:scale-110 transition-all duration-300">
           <project.icon size={24} className="text-primary" />
@@ -75,6 +77,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
           </span>
         ))}
       </div>
+      </div>
     </div>
   );
 };
@@ -85,6 +88,9 @@ const ProjectsSection = () => {
   return (
     <section id="projects" className="py-24 relative">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+      <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
+      <div className="absolute top-40 -left-20 w-80 h-80 bg-primary/20 rounded-full blur-3xl animate-orb pointer-events-none" />
+      <div className="absolute bottom-20 -right-20 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-orb pointer-events-none" style={{ animationDelay: "3s" }} />
       <div className="max-w-6xl mx-auto px-6" ref={ref}>
         <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text inline-block">Projects</h2>
         <p className="text-muted-foreground mb-12 max-w-xl">
