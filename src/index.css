@@ -84,4 +84,54 @@
     mask-composite: exclude;
     pointer-events: none;
   }
+
+  .tilt-card {
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .tilt-card:hover {
+    transform: perspective(1000px) rotateX(4deg) rotateY(-6deg) translateY(-6px);
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .shimmer-border {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer-border::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(110deg, transparent 20%, hsl(217 91% 60% / 0.6) 40%, hsl(263 70% 58% / 0.6) 60%, transparent 80%);
+    background-size: 200% 100%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: shimmer 4s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes orb-drift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(40px, -30px) scale(1.1); }
+    66% { transform: translate(-30px, 20px) scale(0.95); }
+  }
+  .animate-orb { animation: orb-drift 14s ease-in-out infinite; }
+
+  @keyframes grid-move {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 40px; }
+  }
+  .grid-bg {
+    background-image:
+      linear-gradient(hsl(217 91% 60% / 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(217 91% 60% / 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: grid-move 20s linear infinite;
+  }
 }

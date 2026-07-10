@@ -17,7 +17,7 @@ const HeroSection = () => {
 
       <div className="relative max-w-6xl mx-auto px-6 py-20 w-full grid md:grid-cols-2 gap-12 items-center">
         {/* Left content */}
-        <div className="space-y-6 opacity-0 animate-fade-up" style={{ animationDelay: "0.2s" }}>
+        <div className="space-y-6 opacity-0 animate-fade-up order-2 md:order-1" style={{ animationDelay: "0.2s" }}>
           <div className="inline-block px-4 py-1.5 rounded-full glass text-xs font-medium text-primary">
             ✨ Open to Opportunities
           </div>
@@ -60,7 +60,7 @@ const HeroSection = () => {
         </div>
 
         {/* Right - Profile photo */}
-        <div className="flex justify-center opacity-0 animate-fade-up" style={{ animationDelay: "0.5s" }}>
+        <div className="flex justify-center opacity-0 animate-fade-up order-1 md:order-2" style={{ animationDelay: "0.5s" }}>
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary rounded-full blur-2xl opacity-30 animate-pulse-glow" />
             <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full gradient-border overflow-hidden glass">
