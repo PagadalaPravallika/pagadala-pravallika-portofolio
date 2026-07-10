@@ -12,6 +12,8 @@ const AboutSection = () => {
 
   return (
     <section id="about" className="py-24 relative">
+      <div className="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-orb pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-80 h-80 bg-secondary/10 rounded-full blur-3xl animate-orb pointer-events-none" style={{ animationDelay: "6s" }} />
       <div className="max-w-6xl mx-auto px-6" ref={ref}>
         <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text inline-block">About Me</h2>
         <div className="grid md:grid-cols-2 gap-12 mt-8">
