@@ -20,6 +20,9 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-24 relative">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-secondary/30 to-transparent" />
+      <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
+      <div className="absolute top-10 -left-20 w-96 h-96 bg-primary/15 rounded-full blur-3xl animate-orb pointer-events-none" />
+      <div className="absolute bottom-10 -right-20 w-96 h-96 bg-secondary/15 rounded-full blur-3xl animate-orb pointer-events-none" style={{ animationDelay: "4s" }} />
       <div className="max-w-6xl mx-auto px-6" ref={ref}>
         <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text inline-block">Get in Touch</h2>
         <p className="text-muted-foreground mb-12 max-w-xl">
