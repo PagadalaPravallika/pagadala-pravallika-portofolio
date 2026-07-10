@@ -37,8 +37,8 @@ I am Pravallika Pagadala, a B.Tech Computer Science and Engineering student pass
 
 ## Contact
 
-* GitHub: https://github.com/yourusername
-* LinkedIn: https://linkedin.com/in/yourprofile
+* GitHub: https://github.com/pagadalapravallika
+* LinkedIn: https://linkedin.com/in/pagadalapravallika
 
 ## License
 
